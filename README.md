@@ -26,11 +26,11 @@ has_many :matches
 |name              |string    |null: false                   |
 |description       |text      |null: false                   |
 |image             |----------|                              | activestorageを利用 
-|category_id       |integer   |null: false,                  | active_hash
-|condition_id      |integer   |null: false,                  | active_hash
-|delivery_load_id  |integer   |null: false,                  | active_hash
-|prefecture_id     |integer   |null: false,                  | active_hash
-|delivery_day_id   |integer   |null: false,                  | active_hash
+|category_id       |integer   |null: false                   | active_hash
+|condition_id      |integer   |null: false                   | active_hash
+|delivery_load_id  |integer   |null: false                   | active_hash
+|prefecture_id     |integer   |null: false                   | active_hash
+|delivery_day_id   |integer   |null: false                   | active_hash
 |price             |integer   |null: false                   |
 |user　　　　　　    |references|null: false, foreign_key: true|←販売者
 
@@ -57,7 +57,7 @@ has_one:buyer_address
 |--------------|----------|------------------------------|
 |id            |integer   |null: false                   |
 |address_number|string    |null: false                   |
-|prefecture_id |integer   |null: false,                  | active_hash
+|prefecture_id |integer   |null: false                   | active_hash
 |city          |string    |null: false                   |
 |banti         |string    |null: false                   |
 |building_name |string    |                              |
