@@ -1,6 +1,11 @@
 require 'rails_helper'
+#実行コード
+#bundle exec rspec spec/models/good_spec.rb
 
 RSpec.describe Good, type: :model do
+  before do
+    @good = FactoryBot.build(:good)
+  end
   describe '商品登録' do
     context '商品登録できる時' do
       it "全ての情報が入力されている時、商品登録可能" do
