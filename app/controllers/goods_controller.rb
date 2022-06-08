@@ -8,22 +8,23 @@ class GoodsController < ApplicationController
   end
 
   def create
-    # @object = Object.new(params[:object])
-    # if @object.save
-    #   flash[:success] = "Object successfully created"
-    #   redirect_to @object
-    # else
-    #   flash[:error] = "Something went wrong"
-    #   render 'new'
-    # end
+    @good = Good.new(good_params)
+    if @good.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
   
 
   def show
   end
 
-  def edit
-    # @ = .find()
+  private
+
+  def good_params
+    params.require(:good).permit(:name, :description, :category_id, 
+      :condition_id, :delivery_load_id, :prefecture_id, :delivery_day_id,
+       :price, :image).merge(user_id: current_user.id)
   end
-  
 end
