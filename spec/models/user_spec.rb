@@ -70,10 +70,15 @@ RSpec.describe '新規登録', type: :models do
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
-      it "名前は全角（漢字・ひらがな・カタカナ）で入力しないと登録できない" do
+      it "名字は全角（漢字・ひらがな・カタカナ）で入力しないと登録できない" do
         @user.first_name = "aaa"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name は全角入力でお願いします")
+      end
+      it "名前は全角（漢字・ひらがな・カタカナ）で入力しないと登録できない" do
+        @user.last_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name は全角入力でお願いします")
       end
       it "名前カナの名字の入力が欠けている場合、登録できない" do
         @user.first_name_kana = ""
@@ -85,10 +90,15 @@ RSpec.describe '新規登録', type: :models do
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
-      it "名前カナは全角（カタカナ）出ないと登録できない" do
+      it "名字カナは全角（カタカナ）出ないと登録できない" do
         @user.first_name_kana = "なまえ"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana は全角カタカナで入力をお願いします")
+      end
+      it "名前カナは全角（カタカナ）出ないと登録できない" do
+        @user.last_name_kana = "なまえ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana は全角カタカナで入力をお願いします")
       end
       it "生年月日が入っていない登録できない" do
         @user.birthday = ""
