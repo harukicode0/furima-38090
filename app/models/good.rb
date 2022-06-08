@@ -11,6 +11,7 @@ class Good < ApplicationRecord
       validates :delivery_day_id
       validates :prefecture_id
     end
+    validates :image
   end
   
 
@@ -23,4 +24,12 @@ class Good < ApplicationRecord
   belongs_to :category
   belongs_to :delivery_day
   belongs_to :delivery_load
+
+  has_one_attached :image
+
+  private
+
+  # def message_params
+  #   params.require(:good).permit(:content, :image).merge(user_id: current_user.id)
+  # end
 end
