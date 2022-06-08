@@ -20,4 +20,7 @@ class User < ApplicationRecord
     validates :nickname
     validates :birthday
   end
+
+  # associations
+  has_many :goods
 end
