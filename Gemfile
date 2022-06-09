@@ -64,3 +64,6 @@ gem 'faker'
 gem"gimei"
 gem 'rspec-rails', '~> 4.0.0'
 gem 'solargraph', group: :development
+gem 'active_hash'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'

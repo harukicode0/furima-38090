@@ -32,7 +32,7 @@ has_many :matches
 |prefecture_id     |integer   |null: false                   | active_hash
 |delivery_day_id   |integer   |null: false                   | active_hash
 |price             |integer   |null: false                   |
-|user　　　　　　    |references|null: false, foreign_key: true|←販売者
+|user              |references|null: false, foreign_key: true|←販売者
 
 ### Association
 belongs_to:user
