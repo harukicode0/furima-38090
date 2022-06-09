@@ -29,27 +29,27 @@ RSpec.describe Good, type: :model do
         expect(@good.errors.full_messages).to include("Description can't be blank")
       end
       it "カテゴリーの情報がないとき、登録することができない" do
-        @good.category_id = ""
+        @good.category_id = 1
         @good.valid?
         expect(@good.errors.full_messages).to include("Category can't be blank")
       end
       it "商品の状態が登録されていない時、登録することができない" do
-        @good.condition_id = ""
+        @good.condition_id = 1
         @good.valid?
         expect(@good.errors.full_messages).to include("Condition can't be blank")
       end
       it "配送料の負担情報がないとき、登録することができない" do
-        @good.delivery_load_id = ""
+        @good.delivery_load_id = 1
         @good.valid?
         expect(@good.errors.full_messages).to include("Delivery load can't be blank")
       end
       it "発送元の地域が登録されていないとき、登録することができない" do
-        @good.prefecture_id = ""
+        @good.prefecture_id = 1
         @good.valid?
         expect(@good.errors.full_messages).to include("Prefecture can't be blank")
       end
       it "発送までの日付が登録されていないとき、登録することができない" do
-        @good.delivery_day_id = ""
+        @good.delivery_day_id = 1
         @good.valid?
         expect(@good.errors.full_messages).to include("Delivery day can't be blank")
       end
@@ -72,6 +72,11 @@ RSpec.describe Good, type: :model do
         @good.price = 10000000
         @good.valid?
         expect(@good.errors.full_messages).to include("Price must be less than or equal to 9999999")
+      end
+      it "ユーザー情報が紐づいていない時、登録することができない" do
+        @good.user = nil
+        @good.valid?
+        expect(@good.errors.full_messages).to include("User must exist")
       end
     end
   end
