@@ -1,0 +1,2 @@
+class Macth < ApplicationRecord
+end
