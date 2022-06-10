@@ -1,0 +1,2 @@
+class BuyerAddress < ApplicationRecord
+end
