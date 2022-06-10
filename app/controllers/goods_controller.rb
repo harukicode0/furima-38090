@@ -1,5 +1,5 @@
 class GoodsController < ApplicationController
-  before_action :editor_is_correct_user, only: [:edit, :update]
+  before_action :editor_is_correct_user, only: [:edit, :update,:destroy]
   before_action :find_good_recod, only: [:show,:edit,:update]
   before_action :authenticate_user!
 
@@ -33,6 +33,12 @@ class GoodsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    good = Good.find(params[:id])
+    good.destroy
+    redirect_to root_path
   end
 
   private
