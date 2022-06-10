@@ -1,6 +1,7 @@
 class GoodsController < ApplicationController
   before_action :move_to_index, except: [:index,:show, :destroy]  
   before_action :editor_is_correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @goods = Good.includes(:user).order("created_at DESC")
