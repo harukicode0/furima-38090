@@ -1,2 +1,0 @@
-class BuyerAdrressesController < ApplicationController
-end
