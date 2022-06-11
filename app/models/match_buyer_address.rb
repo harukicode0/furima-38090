@@ -13,6 +13,7 @@ class MatchBuyerAddress
     validates :city
     validates :phone_number,format:{with:phone_number_ten_or_eleven_regex, message: "can't be blank"}
     validates :match_id
+    validates :token
   end
   validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
 
