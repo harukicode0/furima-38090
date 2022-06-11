@@ -6,7 +6,7 @@ class MatchBuyerAddress
   address_number_regex = /\A[\d]{3}[-][\d]{4}\z/
   phone_number_ten_or_eleven_regex = /\A[\d]{10,11}\z/
 
-  with_options presence :true do
+  with_options presence: true do
     validates :user_id
     validates :good_id
     validates :address_number,format: { with: address_number_regex, message: "can't be blank" }
