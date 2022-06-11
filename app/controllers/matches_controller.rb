@@ -1,19 +1,18 @@
 class MatchesController < ApplicationController
   def index
     @good = Good.find(params[:good_id])
-    @match = Match.new
+    @match_buyer_address = MatchBuyerAddress.new
   end
 
   def create 
     binding.pry
-    @match = Match.new(match_params)
+    @match_buyer_address = MatchBuyerAddress.new(match_params)
   end
   
   private
 
   def match_params
-    params.require(:match).permit(:name, :description, :category_id, 
-      :condition_id, :delivery_load_id, :prefecture_id, :delivery_day_id,
-       :price, :image).merge(user_id: current_user.id)
+    params.require(:match_buyer_address).permit(:good_id, :address_number, :prefecture,
+      :city, :banti, :building_name, :phone_number,:match_id).merge(user_id: current_user.id)
   end
 end
