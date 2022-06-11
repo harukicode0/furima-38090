@@ -1,4 +1,4 @@
-class Macth < ApplicationRecord
+class Match < ApplicationRecord
 
   #association
   belongs_to :good
