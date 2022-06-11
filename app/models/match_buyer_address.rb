@@ -1,7 +1,7 @@
 class MatchBuyerAddress
   include ActiveModel::Model
   attr_accessor :user_id, :good_id, :address_number, :prefecture,
-  :city, :banti, :building_name, :phone_number,:match_id
+  :city, :banti, :building_name, :phone_number,:match_id,:token
 
   address_number_regex = /\A[\d]{3}[-][\d]{4}\z/
   phone_number_ten_or_eleven_regex = /\A[\d]{10,11}\z/

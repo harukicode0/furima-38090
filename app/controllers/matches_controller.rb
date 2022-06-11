@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
     @match_buyer_address = MatchBuyerAddress.new
   end
 
-  def create 
+  def create
     binding.pry
     @match_buyer_address = MatchBuyerAddress.new(match_params)
   end
@@ -12,7 +12,8 @@ class MatchesController < ApplicationController
   private
 
   def match_params
-    params.require(:match_buyer_address).permit(:good_id, :address_number, :prefecture,
-      :city, :banti, :building_name, :phone_number,:match_id).merge(user_id: current_user.id)
+    params.require(:match_buyer_address).permit(:good_id, :address_number,
+       :prefecture,:city, :banti, :building_name, :phone_number,:match_id
+      ).merge(user_id: current_user.id,good_id: params[:good_id],token: params[:token])
   end
 end
