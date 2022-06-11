@@ -1,4 +1,4 @@
-class DonationAddress
+class MatchBuyerAddress
   include ActiveModel::Model
   attr_accessor :user_id, :good_id, :address_number, :prefecture,
   :city, :banti, :building_name, :phone_number,:match_id
@@ -15,4 +15,11 @@ class DonationAddress
     validates :match_id
   end
   validates :prefecture, numericality: {other_than: 1, message: "can't be blank"}
+
+  def save
+    match = Match.create(user_id: user_id, good_id: good_id)
+    BuyerAddress.create(address_number:address_number, prefecture_id:prefecture,
+      city:city, banti:banti, building_name:building_name, phone_number:phone_number,
+      match_id:match.id)
+  end
 end
