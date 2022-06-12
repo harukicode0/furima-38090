@@ -7,6 +7,7 @@ FactoryBot.define do
     banti{address.town.kanji}
     building_name{Faker::Lorem.sentence}
     phone_number{Faker::Number.number(digits: 10)}
+    prefecture_id{Faker::Number.between(from: 2, to: 48)}
     token{"tok_abcdefghijk00000000000000000"}
   end
 end

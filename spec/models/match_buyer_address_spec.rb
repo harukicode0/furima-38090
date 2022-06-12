@@ -1,28 +1,29 @@
 require 'rails_helper'
+# テスト実行のコード
+# bundle exec rspec spec/models/match_buyer_address_spec.rb
 
 RSpec.describe MatchBuyerAddress, type: :model do
-  describe 'ユーザー新規登録' do
+  describe '商品購入' do
     before do
-      @user = FactoryBot.build(:user)
+      user = FactoryBot.create(:user)
+      good = FactoryBot.create(:good)
+      @match_buyer_address = FactoryBot.build(:match_buyer_address, user_id: user.id, good_id:good.id)
     end
 
-    context '内容に問題ない場合' do
-      it 'すべての値が正しく入力されていれば保存できること' do
+    context '購入プロセスに問題ない場合' do
+      it 'すべての値が入力されていれば、商品を購入できる' do
+        expect(@match_buyer_address).to be_valid
+      end
+      it 'building_nameが空欄でも他の項目に不備がなければ、保存できること' do
+        @match_buyer_address.building_name =""
+        expect(@match_buyer_address).to be_valid
       end
     end
 
-    context '内容に問題がある場合' do
+    context '購入プロセスに問題がある場合' do
       it 'nameが空だと保存できないこと' do
       end
-      it 'nameが全角日本語でないと保存できないこと' do
-      end
-      it 'name_readingが空だと保存できないこと' do
-      end
-      it 'name_readingが全角カタカナでないと保存できないこと' do
-      end
-      it 'nicknameが空だと保存できないこと' do
-      end
-      it 'nicknameが半角でないと保存できないこと' do
+      it 'nameが空だと保存できないこと' do
       end
     end
   end
