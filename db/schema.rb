@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2022_06_10_090632) do
     t.bigint "good_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["good_id"], name: "index_matches_on_good_id"
+    t.index ["good_id"], name: "index_matches_on_good_id", unique: true
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 

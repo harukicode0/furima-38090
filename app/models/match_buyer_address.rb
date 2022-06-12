@@ -8,7 +8,7 @@ class MatchBuyerAddress
 
   with_options presence: true do
     validates :user_id
-    validates :good_id
+    validates :good_id, uniqueness: true
     validates :address_number,format: { with: address_number_regex, message: "can't be blank" }
     validates :city
     validates :phone_number,format:{with:phone_number_ten_or_eleven_regex, message: "can't be blank"}
