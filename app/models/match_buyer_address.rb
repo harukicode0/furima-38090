@@ -9,9 +9,9 @@ class MatchBuyerAddress
   with_options presence: true do
     validates :user_id
     validates :good_id
-    validates :address_number,format: { with: address_number_regex, message: "can't be blank" }
+    validates :address_number,format: { with: address_number_regex, message: "は○○○-(半角ハイフン)○○○○の形で入力してください(○は数字)" }
     validates :city
-    validates :phone_number,format:{with:phone_number_ten_or_eleven_regex, message: "can't be blank"}
+    validates :phone_number,format:{with:phone_number_ten_or_eleven_regex, message: "は１０〜１１桁の数字で入力してください"}
     validates :token
   end
   validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
