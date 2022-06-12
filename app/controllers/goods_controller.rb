@@ -1,7 +1,8 @@
 class GoodsController < ApplicationController
   before_action :editor_is_correct_user, only: [:edit, :update,:destroy]
-  before_action :find_good_recod, only: [:show,:edit,:update]
-  before_action :authenticate_user!
+  before_action :find_good_record, only: [:show,:edit,:update,:destroy]
+  before_action :authenticate_user!, except:[:index, :show]  
+  before_action :sold_out_goods,only:[:update,:destroy]
 
   def index
     @goods = Good.includes(:user).order("created_at DESC")
@@ -36,8 +37,7 @@ class GoodsController < ApplicationController
   end
 
   def destroy
-    good = Good.find(params[:id])
-    good.destroy
+    @good.destroy
     redirect_to root_path
   end
 
@@ -55,7 +55,13 @@ class GoodsController < ApplicationController
     end
   end
 
-  def find_good_recod
+  def find_good_record
     @good = Good.find(params[:id])
+  end
+
+  def sold_out_goods
+    if @good.match
+      redirect_to root_path
+    end
   end
 end

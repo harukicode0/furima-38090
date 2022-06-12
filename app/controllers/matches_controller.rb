@@ -1,5 +1,7 @@
 class MatchesController < ApplicationController
-  before_action :seach_good,only: [:index, :create]
+  before_action :make_good,only: [:index, :create]
+  before_action :authenticate_user!
+  before_action :the_goods_sold,only:[:index,:create]
   
   def index
     @match_buyer_address = MatchBuyerAddress.new
@@ -33,7 +35,13 @@ class MatchesController < ApplicationController
     )
   end
 
-  def seach_good
+  def make_good
     @good = Good.find(params[:good_id])
+  end
+
+  def the_goods_sold
+    if @good.match != nil
+      redirect_to root_path
+    end
   end
 end
