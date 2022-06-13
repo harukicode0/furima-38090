@@ -6,13 +6,13 @@ RSpec.describe MatchBuyerAddress, type: :model do
   describe '商品購入' do
     before do
       #処理が早すぎてエラーが出るため、間を置く
-      sleep 0.025
+      sleep 0.05
       user = FactoryBot.create(:user)
-      sleep 0.025
+      sleep 0.05
       good = FactoryBot.create(:good)
-      sleep 0.025
+      sleep 0.05
       @match_buyer_address = FactoryBot.build(:match_buyer_address, user_id: user.id, good_id:good.id)
-      sleep 0.025
+      sleep 0.05
     end
 
     context '購入できる場合' do
