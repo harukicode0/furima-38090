@@ -6,11 +6,13 @@ RSpec.describe MatchBuyerAddress, type: :model do
   describe '商品購入' do
     before do
       #処理が早すぎてエラーが出るため、間を置く
-      sleep 0.05
+      sleep 0.025
       user = FactoryBot.create(:user)
+      sleep 0.025
       good = FactoryBot.create(:good)
+      sleep 0.025
       @match_buyer_address = FactoryBot.build(:match_buyer_address, user_id: user.id, good_id:good.id)
-      sleep 0.05
+      sleep 0.025
     end
 
     context '購入できる場合' do
@@ -87,6 +89,16 @@ RSpec.describe MatchBuyerAddress, type: :model do
         @match_buyer_address.token = nil
         @match_buyer_address.valid?
         expect(@match_buyer_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'userが紐づいていないと、購入できない'do
+        @match_buyer_address.user_id = nil
+        @match_buyer_address.valid?
+        expect(@match_buyer_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'goodが紐づいていないと、購入できない'do
+        @match_buyer_address.good_id = nil
+        @match_buyer_address.valid?
+        expect(@match_buyer_address.errors.full_messages).to include("Good can't be blank")
       end
     end
   end
