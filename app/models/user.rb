@@ -23,4 +23,5 @@ class User < ApplicationRecord
 
   # associations
   has_many :goods
+  has_many :matches
 end

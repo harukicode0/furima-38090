@@ -17,6 +17,7 @@ class Good < ApplicationRecord
 
   # association
   belongs_to :user
+  has_one :match
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
