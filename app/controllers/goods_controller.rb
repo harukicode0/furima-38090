@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
   before_action :editor_is_correct_user, only: [:edit, :update,:destroy]
   before_action :find_good_record, only: [:show,:edit,:update,:destroy]
   before_action :authenticate_user!, except:[:index, :show]  
-  before_action :sold_out_goods,only:[:update,:destroy]
+  before_action :sold_out_goods,only:[:edit,:update,:destroy]
 
   def index
     @goods = Good.includes(:user).order("created_at DESC")

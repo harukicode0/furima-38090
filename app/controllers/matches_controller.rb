@@ -1,6 +1,6 @@
 class MatchesController < ApplicationController
-  before_action :make_good,only: [:index, :create]
   before_action :authenticate_user!
+  before_action :make_good, :good_is_mine,only: [:index, :create]
   before_action :the_goods_sold,only:[:index,:create]
   
   def index
@@ -37,6 +37,12 @@ class MatchesController < ApplicationController
 
   def make_good
     @good = Good.find(params[:good_id])
+  end
+
+  def good_is_mine
+    if @good.user.id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def the_goods_sold
