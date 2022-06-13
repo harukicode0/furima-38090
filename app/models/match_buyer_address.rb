@@ -12,6 +12,7 @@ class MatchBuyerAddress
     validates :good_id
     validates :address_number,format: { with: address_number_regex, message: "は○○○-(半角ハイフン)○○○○の形で入力してください(○は数字)" }
     validates :city, format: {with: check_name_kanji_kana_hiragana_REGEX, message: "は全角入力でお願いします"}
+    validates :banti
     validates :phone_number,format:{with:phone_number_ten_or_eleven_regex, message: "は１０〜１１桁の数字で入力してください"}
     validates :token
   end
